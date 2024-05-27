@@ -1,4 +1,5 @@
 # LumaJavaSeleniumTestNGAllure
+[![Build Java with Maven](https://github.com/BNastasia/LumaJavaSeleniumTestNGAllure/actions/workflows/maven.yml/badge.svg)](https://github.com/BNastasia/LumaJavaSeleniumTestNGAllure/actions/workflows/maven.yml)
 
 ## Languages and Frameworks
 
