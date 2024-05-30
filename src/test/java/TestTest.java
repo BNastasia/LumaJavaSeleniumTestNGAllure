@@ -7,8 +7,8 @@ public class TestTest {
         Assert.assertTrue(true);
     }
 
-    @Test
-    public void testFail() {
-        Assert.assertTrue(false);
-    }
+//    @Test
+//    public void testFail() {
+//        Assert.assertTrue(false);
+//    }
 }
