@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CrossBrowser Test Suite" parallel="none">
+    <test name="ChromeTest" verbose="2" preserve-order="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.lumatest.test.NavigationTest">
+                <methods>
+                    <include name="testOpenBaseUrl"/>
+                    <include name="testNavigationMenu"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
