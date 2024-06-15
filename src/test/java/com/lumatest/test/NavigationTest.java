@@ -12,7 +12,7 @@ public class NavigationTest extends BaseTest {
     @Description("TC01 Open base URL")
     @Story("Navigation")
     @Link(TestData.BASE_URL)
-    @Test
+    @Test(groups = "Regression")
     public void testOpenBaseUrl() {
         Allure.step("SetUp expected results");
         final String expectedUrl = TestData.BASE_URL + "/";
