@@ -10,6 +10,7 @@
                     <include name="testNavigationMenu"/>
                 </methods>
             </class>
+            <class name="com.lumatest.test.ProductPageTest"/>
         </classes>
     </test>
 </suite>
