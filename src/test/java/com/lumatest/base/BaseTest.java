@@ -1,13 +1,12 @@
 package com.lumatest.base;
 
+import com.lumatest.data.TestData;
 import com.lumatest.utils.DriverUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Allure;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 public abstract class BaseTest {
     private WebDriver driver;
@@ -15,14 +14,14 @@ public abstract class BaseTest {
 
     @BeforeSuite
     protected void setUpWebDriverManager() {
-        WebDriverManager.chromiumdriver().setup();
-        WebDriverManager.firefoxdriver().setup();
-        WebDriverManager.safaridriver().setup();
+        WebDriverManager.chromedriver().setup();
+//        WebDriverManager.firefoxdriver().setup();
+//        WebDriverManager.safaridriver().setup();
     }
 
     @Parameters("browser")
     @BeforeMethod
-    protected void setupDriver(String browser) {
+    protected void setupDriver(@Optional("chrome") String browser) {
         Reporter.log("_____________________________________________________", true);
         this.driver = DriverUtils.createDriver(browser, this.driver);
 
@@ -32,15 +31,15 @@ public abstract class BaseTest {
             System.exit(1);
         }
         Reporter.log("INFO: " + browser.toUpperCase() +  " driver created.", true);
-    }
 
-    public WebDriver getDriver() {
-        return this.driver;
+        Reporter.log("INFO: BASE_URL " + TestData.BASE_URL + " opened.");
+        Allure.step("Open Base URL");
+        getDriver().get(TestData.BASE_URL);
     }
 
     @Parameters("browser")
     @AfterMethod(alwaysRun = true)
-    protected void teatDown(String browser) {
+    protected void teatDown(@Optional("chrome") String browser) {
         if(this.driver != null) {
             getDriver().quit();
 
@@ -49,5 +48,9 @@ public abstract class BaseTest {
         } else {
             Reporter.log("INFO: Driver is null.", true);
         }
+    }
+
+    protected WebDriver getDriver() {
+        return this.driver;
     }
 }
