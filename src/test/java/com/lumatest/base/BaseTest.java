@@ -10,8 +10,6 @@ import org.testng.annotations.*;
 
 public abstract class BaseTest {
     private WebDriver driver;
-//    private final String browser = "chrome";
-
     @BeforeSuite
     protected void setUpWebDriverManager() {
         WebDriverManager.chromedriver().setup();
